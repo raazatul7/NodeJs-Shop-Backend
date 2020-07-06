@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGO_ATLAS_PASS": "raazatul7",
+    "PORT": 9000
+  }
+}
