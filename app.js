@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const productsRoutes = require("./api/routes/products");
 const ordersRoutes = require("./api/routes/orders");
+const usersRoutes = require("./api/routes/users");
 
 //connectors
 app.use(morganLogger("dev"));
@@ -17,17 +18,22 @@ mongoose.connect(
   "mongodb+srv://raazatul7:" +
     process.env.MONGO_ATLAS_PASS +
     "@cluster0.ra0fa.mongodb.net/" +
-    process.env.MONGO_ATLAS_PASS +
+    process.env.MONGO_ATLAS_USER +
     "?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   }
 );
 
 //Routes
 app.use("/products", productsRoutes);
 app.use("/orders", ordersRoutes);
+app.use("/users", usersRoutes);
+
+//Images route
+app.use("/uploads/", express.static("uploads"));
 
 //Header
 app.use((req, res, next) => {
