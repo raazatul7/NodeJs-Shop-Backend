@@ -13,7 +13,7 @@ app.use(morganLogger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//database connection
+
 mongoose.connect(
   "mongodb+srv://raazatul7:" +
     process.env.MONGO_ATLAS_PASS +
